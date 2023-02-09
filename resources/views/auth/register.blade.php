@@ -1,60 +1,77 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms" required />
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
+    @section('page-content')
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <x-jet-validation-errors class="mb-4" />
+                    <div class="card bg-gray-blue mx-auto mt-5 w-25 text-center border-dark-red">
+                        <div class="card-header">
+                            <h2>Registro de usuario</h2>
                         </div>
-                    </x-jet-label>
+                        <div class="card-body">
+                            <form action="{{ route('register') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name">Nombre Completo</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="text" name="name" id="name" class="form-control"
+                                            placeholder="Nombre" required autofocus autocomplete="name">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fa-solid fa-user"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <label for="email">Correo Electrónico</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="email" name="email" id="email" class="form-control"
+                                            placeholder="correo@ejemplo.com" required autocomplete="username">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2">
+                                                <i class="fa-solid fa-envelope-circle-check"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <label for="password" class="mt-3">Contraseña</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="password" name="password" id="password" class="form-control"
+                                            placeholder="********" required autocomplete="new-password">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon3">
+                                                <i class="fa-solid fa-key"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <label for="password_confirmation" class="mt-3">Confirmar Contraseña</label>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
+                                            placeholder="********" required autocomplete="new-password">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon3">
+                                                <i class="fa-solid fa-unlock-keyhole"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <a href="{{ route('login') }}" class="text-dark">
+                                                ¿Ya estas registrado?
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-rounded bg-dark-red text-light">
+                                                Registrarse
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
-        </form>
-    </x-jet-authentication-card>
+        </div>
+    @endsection
 </x-guest-layout>

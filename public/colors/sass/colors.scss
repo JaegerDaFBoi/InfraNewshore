@@ -1,0 +1,56 @@
+$blue: #001427;
+$gray-blue: #708d81;
+$light: #f4d58d;
+$red: #bf0603;
+$dark-red: #8d0801;
+
+//Backgrounds
+.bg-blue {
+  background-color: $blue;
+}
+.bg-gray-blue {
+  background-color: $gray-blue;
+}
+.bg-light {
+  background-color: $light;
+}
+.bg-red {
+  background-color: $red;
+}
+.bg-dark-red {
+  background-color: $dark-red;
+}
+
+//Texts
+.text-blue {
+  color: $blue;
+}
+.text-gray-blue {
+  color: $gray-blue;
+}
+.text-light {
+  color: $light;
+}
+.text-red {
+  color: $red;
+}
+.text-dark-red {
+  color: $dark-red;
+}
+
+//Borders
+.border-blue {
+  border-color: $blue;
+}
+.border-gray-blue {
+  border-color: $gray-blue;
+}
+.border-light {
+  border-color: $light;
+}
+.border-red {
+  border-color: $red;
+}
+.border-dark-red {
+  border-color: $dark-red;
+}
