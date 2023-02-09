@@ -25,21 +25,36 @@
 
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg bg-blue px-5 my-0">
+        <a href="" class="navbar-brand">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo Newshore" height="50px">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a href="{{ route('login') }}" class="nav-link text-dark border rounded bg-light mx-2">Iniciar
-                        Sesión</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('register') }}"
-                        class="nav-link text-dark border rounded bg-light mx-2">Registrarse</a>
-                </li>
-            </ul>
+            @if (Route::has('login'))
+                <ul class="navbar-nav ms-auto">
+                    @auth
+                        <li class="nav-item">
+                            <a href="{{ url('/dashboard') }}" class="nav-link text-dark border rounded bg-light mx-2">
+                                Dashboard
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link text-dark border rounded bg-light mx-2">Iniciar
+                                Sesión</a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a href="{{ route('register') }}"
+                                    class="nav-link text-dark border rounded bg-light mx-2">Registrarse</a>
+                            </li>
+                        @endif
+                    @endauth
+                </ul>
+            @endif
         </div>
     </nav>
     <main class="mt-0 px-0 py-0 w-100">
