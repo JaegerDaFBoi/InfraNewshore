@@ -14,7 +14,7 @@ class Employee extends Model
 
     public function equipment() 
     {
-        return $this->hasOne(Equipment::class, 'fk_equipment_id', 'employee_id');
+        return $this->hasOne(Equipment::class, 'equipment_id');
     }
 
     public function elements()

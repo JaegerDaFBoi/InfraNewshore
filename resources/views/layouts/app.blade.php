@@ -43,8 +43,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                            <a href="{{ route('employee.index') }}" class="nav-link px-0 align-middle">
+                                <i class="fa-solid fa-users"></i> <span class="ms-1 d-none d-sm-inline">Empleados</span></a>
                         </li>
                         <li>
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
