@@ -70,7 +70,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        return view('employees.edit', compact('employee'));
     }
 
     /**
@@ -82,7 +82,10 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $employee->employee_name = $request->input('employee_name');
+        $employee->employee_position = $request->input('employee_position');
+        $employee->save();
+        return redirect()->route('employee.index');
     }
 
     /**

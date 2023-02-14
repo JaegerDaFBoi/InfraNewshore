@@ -33,8 +33,8 @@ Route::middleware([
                 Route::get('/index', 'index')->name('index');
                 Route::get('/create', 'create')->name('create');
                 Route::post('/store', 'store')->name('store');
-                Route::get('/edit', 'edit')->name('edit');
-                Route::patch('/update', 'update')->name('update');
+                Route::get('/{employee}/edit', 'edit')->name('edit');
+                Route::put('/{employee}/update', 'update')->name('update');
                 Route::delete('/delete', 'destroy')->name('delete');
             });
         });

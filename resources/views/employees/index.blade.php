@@ -39,7 +39,10 @@
                                         <td>Si</td>
                                         <td>{{ $employee->equipment->model_name }}</td>
                                       @endif
-                                      <td><button>Eliminar</button></td>
+                                      <td>
+                                        <button><a href="{{ route('employee.edit', $employee) }}">Editar</a></button>
+                                        <button>Eliminar</button>
+                                      </td>
                                     </tr>
                                   @endforeach
                                 </tbody>
