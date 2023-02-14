@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('employees', function (Blueprint $table) {
-            $table->foreign(['fk_equipment'], 'fk_equipment_employee')->references('equipment_id')->on('equipments')->cascadeOnUpdate()->nullOnDelete();
+        Schema::table('equipments', function (Blueprint $table) {
+            $table->foreign(['fk_employee_id'], 'fk_employee_equipment')->references('employee_id')->on('employees')->cascadeOnUpdate()->nullOnDelete();
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('employees', function (Blueprint $table) {
-            $table->dropForeign('fk_equipment_employee');
+        Schema::table('equipments', function (Blueprint $table) {
+            $table->dropForeign('fk_employee_equipment');
         });
     }
 };

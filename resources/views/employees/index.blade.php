@@ -32,10 +32,10 @@
                                       <td>{{ $employee->employee_id }}</td>
                                       <td>{{ $employee->employee_name }}</td>
                                       <td>{{ $employee->employee_position }}</td>
-                                      @if (is_null($employee->fk_equipment))
+                                      @if (is_null($employee->equipment))
                                         <td>No</td>
-                                        <td>Sin equipo asignado</td>
-                                        @else 
+                                        <td>Sin Equipo Asignado</td>
+                                        @else
                                         <td>Si</td>
                                         <td>{{ $employee->equipment->model_name }}</td>
                                       @endif

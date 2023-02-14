@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Equipment;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -39,7 +40,14 @@ class EmployeeController extends Controller
         $employee = new Employee();
         $employee->employee_name = $request->input('employee_name');
         $employee->employee_position = $request->input('employee_position');
+        $assigned_equipment = $request->input('due_equipments');
         $employee->save();
+        if (!empty($assigned_equipment)) {
+            $equipment_to_update = Equipment::find($assigned_equipment);
+            $equipment_to_update->fk_employee_id = $employee->employee_id;
+            $equipment_to_update->is_assigned = true;
+            $equipment_to_update->save();
+        }
         return redirect()->route('employee.index');
     }
 

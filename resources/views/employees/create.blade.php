@@ -29,7 +29,7 @@
                   </div>
                 </div>
               </div>
-              {{-- Espacio para componente de asignacion de equipo --}}
+              @livewire('equipment-assignment')
               <div class="row mb-4">
                 <div class="col-md-6">
                   <button type="submit" class="btn btn-dark">

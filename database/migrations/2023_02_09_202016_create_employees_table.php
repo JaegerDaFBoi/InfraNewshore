@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id('employee_id');
             $table->mediumText('employee_name');
             $table->text('employee_position');
-            $table->unsignedBigInteger('fk_equipment')->nullable()->index('fk_equipment_employee');
             $table->timestamps();
         });
     }

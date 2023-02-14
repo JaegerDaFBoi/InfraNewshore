@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('operative_system');
             $table->text('storage_disk_type')->nullable();
             $table->integer('storage_capacity');
+            $table->unsignedBigInteger('fk_employee_id')->nullable()->index('fk_employee_equipment');
             $table->boolean('is_assigned')->nullable();
             $table->boolean('is_damaged')->nullable();
             $table->timestamps();

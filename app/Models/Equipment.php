@@ -14,6 +14,6 @@ class Equipment extends Model
 
     public function employee()
     {
-        return $this->belongsTo(Employee::class, 'equipment_id', 'employee_id');
+        return $this->belongsTo(Employee::class, 'fk_employee_id', 'equipment_id');
     }
 }
