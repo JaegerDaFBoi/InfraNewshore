@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EquipmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,19 @@ Route::middleware([
                 Route::get('/{employee}/edit', 'edit')->name('edit');
                 Route::put('/{employee}/update', 'update')->name('update');
                 Route::delete('/{employee}/delete', 'destroy')->name('delete');
+            });
+        });
+    });
+
+    Route::controller(EquipmentController::class)->group(function () {
+        Route::prefix('equipment')->group(function () {
+            Route::name('equipment.')->group(function () {
+                Route::get('/index', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('/store', 'store')->name('store');
+                Route::get('/{equipment}/edit', 'edit')->name('edit');
+                Route::put('/{equipment}/update', 'update')->name('update');
+                Route::delete('/{equipment}/delete', 'destroy')->name('delete');
             });
         });
     });
