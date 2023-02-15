@@ -35,7 +35,7 @@ Route::middleware([
                 Route::post('/store', 'store')->name('store');
                 Route::get('/{employee}/edit', 'edit')->name('edit');
                 Route::put('/{employee}/update', 'update')->name('update');
-                Route::delete('/delete', 'destroy')->name('delete');
+                Route::delete('/{employee}/delete', 'destroy')->name('delete');
             });
         });
     });

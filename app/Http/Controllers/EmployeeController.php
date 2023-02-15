@@ -108,6 +108,11 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        
+        $equipment = $employee->equipment;
+        $equipment->fk_employee_id = null;
+        $equipment->is_assigned = false;
+        $equipment->save();
+        $employee->delete();
+        return redirect()->route('employee.index');
     }
 }

@@ -7,9 +7,9 @@
                 </div>
             </div>
             <div class="row mb-2 mt-2">
-              <div class="col-md-6">
-                <button class="btn bg-light"><a href="{{ route('employee.create') }}">Registrar Empleado</a></button>
-              </div>
+                <div class="col-md-6">
+                    <button class="btn bg-light"><a href="{{ route('employee.create') }}">Registrar Empleado</a></button>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12 mx-auto">
@@ -27,24 +27,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  @foreach ($employees as $employee)
-                                    <tr>
-                                      <td>{{ $employee->employee_id }}</td>
-                                      <td>{{ $employee->employee_name }}</td>
-                                      <td>{{ $employee->employee_position }}</td>
-                                      @if (is_null($employee->equipment))
-                                        <td>No</td>
-                                        <td>Sin Equipo Asignado</td>
-                                        @else
-                                        <td>Si</td>
-                                        <td>{{ $employee->equipment->model_name }}</td>
-                                      @endif
-                                      <td>
-                                        <button><a href="{{ route('employee.edit', $employee) }}">Editar</a></button>
-                                        <button>Eliminar</button>
-                                      </td>
-                                    </tr>
-                                  @endforeach
+                                    @foreach ($employees as $employee)
+                                        <tr>
+                                            <td>{{ $employee->employee_id }}</td>
+                                            <td>{{ $employee->employee_name }}</td>
+                                            <td>{{ $employee->employee_position }}</td>
+                                            @if (is_null($employee->equipment))
+                                                <td>No</td>
+                                                <td>Sin Equipo Asignado</td>
+                                            @else
+                                                <td>Si</td>
+                                                <td>{{ $employee->equipment->model_name }}</td>
+                                            @endif
+                                            <td>
+                                                <button><a
+                                                        href="{{ route('employee.edit', $employee) }}">Editar</a></button>
+                                                <form action="{{ route('employee.delete', $employee) }}" method="POST">
+                                                  @csrf
+                                                  @method('DELETE')
+                                                    <button type="submit">
+                                                        Eliminar
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
