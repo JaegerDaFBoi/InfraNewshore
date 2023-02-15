@@ -84,6 +84,18 @@ class EmployeeController extends Controller
     {
         $employee->employee_name = $request->input('employee_name');
         $employee->employee_position = $request->input('employee_position');
+        $selected_equipment = $request->input('assigned_equipments');
+        $equipment = Equipment::find($selected_equipment);
+        if (!is_null($equipment)) {
+            if ($equipment->is_assigned == true) {
+                $equipment->fk_employee_id = null;
+                $equipment->fk_employee_id = $employee->employee_id;
+            } else {
+                $equipment->fk_employee_id = $employee->employee_id;
+                $equipment->is_assigned = true;
+            }
+            $equipment->save();
+        }
         $employee->save();
         return redirect()->route('employee.index');
     }
@@ -96,6 +108,6 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        
     }
 }
